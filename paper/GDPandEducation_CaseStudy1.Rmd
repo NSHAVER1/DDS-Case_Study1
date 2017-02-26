@@ -1,0 +1,49 @@
+---
+title: "GDPandEducation_CaseStudy1"
+author: "Georges Michel, Jack Nelson, Nicole Shaver, Nathan Tuttle"
+date: "February 25, 2017"
+output:
+  #Keep_md: TRUE
+  html_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Introduction
+
+In this study we will examine the Gross Domestic Product (GDP) rankings for countries across the world and analyize relationship between GDP and their education levels. The analysis will utilize data from the following two sources: http://data.worldbank.org/data-catalog/GDP-ranking-table (GDP for 190 countries)
+http://data.worldbank.org/data-catalog/ed-stats (Education Statistics).
+
+
+## Code used to download, tidy and merge the data
+```{r cars}
+getwd()
+```
+
+## Analysis Results
+
+1. After merging the GDP and education datasets based on country code, xxxxx of the IDs match between the two datasets, as shown in the table below:
+```{r cars2}
+getwd()
+```
+2. The country with the 13th lowest GDP (determined by sorting the data in ascending order by GDP) is XXXX. A table of the GDP's sorting in ascending order is shown below:
+```{r cars3}
+getwd()
+```
+3. The average GDP ranking for the "High Income: OECD" group is xxxx. The average GDP ranking for the "High Income: nonOECD" group is yyyy. 
+```{r cars4}
+getwd()
+```
+4. Plotting the GDP for all countries, coloring by Income Group, we note that xxxxxxxxx.
+```{r cars5, echo=TRUE}
+getwd()
+```
+5. Breaking the GDP ranking into 5 separate quantile groups, and then summarizing the Income Groups, we see, as shown in the table below, that xxxx countries are in the "Lower Middle Income" Group but among the 38 nations with the highest GDP.
+```{r cars6}
+getwd()
+```
+
+## Conclusion
+In this study of GDP and Education levels, using data from the world bank, we find that xxxx.
