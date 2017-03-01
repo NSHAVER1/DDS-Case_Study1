@@ -10,5 +10,5 @@ sum(is.na(combo$Long.Name))
 sum(is.na(combo$GDP.Country))
 
 #now make a dataset excluding the rows that were missing in the other dataset
-combo2<-subset(combo,!is.na(Long.Name) | !is.na(GDP.Country))
+combo2<-subset(combo,!is.na(Long.Name) & !is.na(GDP.Country))
 
