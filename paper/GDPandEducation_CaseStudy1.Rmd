@@ -33,8 +33,14 @@ getwd()
 getwd()
 ```
 3. The average GDP ranking for the "High Income: OECD" group is xxxx. The average GDP ranking for the "High Income: nonOECD" group is yyyy. 
-```{r cars4}
+```{r question 3}
 getwd()
+# Create subset dataframe containing only 'High income: OECD' and 
+# 'High income: nonOECD' income group countries
+combo2.HighIncome <- subset(combo2, combo2$Income.Group == 'High income: OECD' | combo2$Income.Group == 'High income: nonOECD')
+
+# Take the average GDP.ranking of the subset with NA values removed
+mean(combo2.HighIncome$GDP.ranking, na.rm = TRUE)
 ```
 4. Plotting the GDP for all countries, coloring by Income Group, we note that xxxxxxxxx.
 ```{r cars5, echo=TRUE}
