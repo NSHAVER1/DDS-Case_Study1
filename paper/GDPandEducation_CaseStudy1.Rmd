@@ -2,46 +2,69 @@
 title: "GDPandEducation_CaseStudy1"
 author: "Georges Michel, Jack Nelson, Nicole Shaver, Nathan Tuttle"
 date: "February 25, 2017"
-output:
-  #Keep_md: TRUE
-  html_document: default
+output: html_document
+Keep_md: TRUE
+
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+#set the working directory
+knitr::opts_knit$set(root.dir = "C:\\Users\\nmsha\\Documents\\SMU\\DoingDataScience\\homework\\CaseStudy1")
+#ensure all required packages are installed, and if not, install them
+list.of.packages <- c("downloader")
+new.packages <- list.of.packages[!(list.of.packages %in% installed.packages()[,"Package"])]
+if(length(new.packages)) install.packages(new.packages)
+library(downloader)
 ```
 
 ## Introduction
 
-In this study we will examine the Gross Domestic Product (GDP) rankings for countries across the world and analyize relationship between GDP and their education levels. The analysis will utilize data from the following two sources: http://data.worldbank.org/data-catalog/GDP-ranking-table (GDP for 190 countries)
-http://data.worldbank.org/data-catalog/ed-stats (Education Statistics).
+In this study we will examine the Gross Domestic Product (GDP) rankings for countries across the world and analyze the relationship between GDP and their education levels. We will order the countries by GDP and evaluate the average GDP ranking for different education groups, visualize the GDP data for all countries by income group, and examine the relationship between income group and GDP. The analysis will utilize GDP and education data from the data-catalog at the world bank web site.
 
 
 ## Code used to download, tidy and merge the data
-```{r cars}
-getwd()
+```{r download_tidy_merge}
+dir<-getwd()
+source(paste(dir,"/source/download.R",sep=""))
+source(paste(dir,"/source/cleanup_ED_GDP.R",sep=""))
+source(paste(dir,"/source/merge_ED_GDP.R",sep=""))
 ```
 
 ## Analysis Results
 
-1. After merging the GDP and education datasets based on country code, xxxxx of the IDs match between the two datasets, as shown in the table below:
-```{r cars2}
-getwd()
+1. After merging the GDP and education datasets based on country code, 224 of the IDs match between the two datasets, as shown in the dataframe below, which has 224 rows after the matching between the education data and the GDP data is complete and NA's are excluded:
+```{r count_rows}
+##use the str command to describe the number of observations.
+##rows where the country code did not match were exluded by this line in merge_ED_GDP.R
+##combo2<-subset(combo,!is.na(Long.Name) & !is.na(GDP.Country))
+str(combo2)
 ```
-2. The country with the 13th lowest GDP (determined by sorting the data in ascending order by GDP) is XXXX. A table of the GDP's sorting in ascending order is shown below:
-```{r cars3}
-getwd()
+
+2. The country with the 13th lowest GDP (determined by sorting the data in ascending order by GDP, placing the United States last) is St. Kitts and Nevis. There were 21 NA values in the GDP column when sorting, but they were all at the end.
+```{r sorting}
+#sort in order of GDP
+sorted_GDP<-combo2[order(combo2$GDP),]
+#pick out the 13th row from the dataframe, just the columns needed to answer the question
+GDP_13<-sorted_GDP[13,c(1,2,3,4)]
+##display the 13th row
+GDP_13
+#count the NA in the GDP column
+sum(is.na(sorted_GDP$GDP))
 ```
-3. The average GDP ranking for the "High Income: OECD" group is xxxx. The average GDP ranking for the "High Income: nonOECD" group is yyyy. 
+
+3. The average GDP ranking for the "High Income: OECD" group is 32.96667. The average GDP ranking for the "High Income: nonOECD" group is 91.91304. There were 14 NAs in the GDP ranking column. 
 ```{r question 3}
-getwd()
 # Create subset dataframe containing only 'High income: OECD' and 
 # 'High income: nonOECD' income group countries
 combo2.HighIncome <- subset(combo2, combo2$Income.Group == 'High income: OECD' | combo2$Income.Group == 'High income: nonOECD')
 
-# Take the average GDP.ranking of the subset with NA values removed
-mean(combo2.HighIncome$GDP.ranking, na.rm = TRUE)
+# Take the average GDP.ranking by income group of the subset with NA values removed
+aggregate(combo2.HighIncome$GDP.ranking~combo2.HighIncome$Income.Group, combo2.HighIncome, mean, na.rm = TRUE)
+#count the number of NA values in GDP ranking
+sum(is.na(combo2.HighIncome$GDP.ranking))
 ```
+
 4. Plotting the GDP for all countries, coloring by Income Group, we note that xxxxxxxxx.
 ```{r cars5, echo=TRUE}
 getwd()
@@ -52,4 +75,4 @@ getwd()
 ```
 
 ## Conclusion
-In this study of GDP and Education levels, using data from the world bank, we find that xxxx.
+In this study of GDP and Education levels, using data from the world bank, we find that there are 224 countries from which we can make conclusions about the GDP and education levels. The country with the 13th lowest GDP is St. Kitts and Nevis.
