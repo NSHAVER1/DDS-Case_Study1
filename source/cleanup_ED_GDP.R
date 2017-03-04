@@ -20,5 +20,21 @@ GDP2$GDP<-as.numeric(gsub(",", "", GDP2$GDP))
 sum(is.na(GDP2$GDP.ranking))
 sum(is.na(GDP2$GDP))
 
-#clean up the EDDATA
-#no clean up needed for our analysis
+# Remove extra letters and characters
+combo$Income.Group<- gsub(":.*", "", combo$Income.Group)
+
+# Fix names to be properly capitalized
+combo$Income.Group[combo$Income.Group == "High income"] <- "High Income"
+combo$Income.Group[combo$Income.Group == "Low income"] <- "Low Income"
+combo$Income.Group[combo$Income.Group == "Lower middle income"] <- "Lower Middle Income"
+combo$Income.Group[combo$Income.Group == "Upper middle income"] <- "Upper Middle Income"
+
+#combo$Income.Group[combo$Income.Group == "Lower Middle Income" & !is.na(combo$Income.Group)]
+
+# Now I will pass this to an apply function that will generate a table of quantiles based on the following array
+arrayOfIncomeGroups <- unique(combo$Income.Group)
+
+#TODO
+combo2 <- combo[which(!is.na(combo$GDP.ranking)),]
+lapply(combo$Income.Group[arrayOfIncomeGroups],function(x) { quantile(x,na.rm = TRUE)})
+
