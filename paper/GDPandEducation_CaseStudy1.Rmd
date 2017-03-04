@@ -10,7 +10,8 @@ Keep_md: TRUE
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 #set the working directory
-knitr::opts_knit$set(root.dir = "C:\\Users\\nmsha\\Documents\\SMU\\DoingDataScience\\homework\\CaseStudy1")
+# knitr::opts_knit$set(root.dir = "C:\\Users\\nmsha\\Documents\\SMU\\DoingDataScience\\homework\\CaseStudy1")
+knitr::opts_knit$set(root.dir = "..\\")
 #ensure all required packages are installed, and if not, install them
 list.of.packages <- c("downloader")
 new.packages <- list.of.packages[!(list.of.packages %in% installed.packages()[,"Package"])]
@@ -37,7 +38,7 @@ source(paste(dir,"/source/merge_ED_GDP.R",sep=""))
 ```{r count_rows}
 ##use the str command to describe the number of observations.
 ##rows where the country code did not match were exluded by this line in merge_ED_GDP.R
-##combo2<-subset(combo,!is.na(Long.Name) & !is.na(GDP.Country))
+combo2<-subset(combo,!is.na(Long.Name) & !is.na(GDP.Country))
 str(combo2)
 ```
 
@@ -70,8 +71,12 @@ sum(is.na(combo2.HighIncome$GDP.ranking))
 getwd()
 ```
 5. Breaking the GDP ranking into 5 separate quantile groups, and then summarizing the Income Groups, we see, as shown in the table below, that xxxx countries are in the "Lower Middle Income" Group but among the 38 nations with the highest GDP.
-```{r cars6}
-getwd()
+```{r question 5}
+
+quantile(which(!is.na(GDP$GDP.ranking)))
+
+
+
 ```
 
 ## Conclusion

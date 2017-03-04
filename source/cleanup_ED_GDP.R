@@ -9,6 +9,10 @@ GDP2<-subset(GDP2, CountryCode!="")
 #make the rankings into numbers, not characters
 GDP2$GDP.ranking<-as.numeric(GDP2$GDP.ranking)
 
+#No Ranking can be quantified if it does not exist. Ranking will only be included for existing lines
+
+combo<-merge(GDP2,EDDATA, by="CountryCode", all=TRUE, SORT=TRUE)
+
 #make the GDP column into a number, not characters by first replacing the commas then forcing it to be numeric
 GDP2$GDP<-as.numeric(gsub(",", "", GDP2$GDP))
 
