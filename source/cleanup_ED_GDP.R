@@ -11,10 +11,10 @@ GDP2$GDP.ranking<-as.numeric(GDP2$GDP.ranking)
 
 #No Ranking can be quantified if it does not exist. Ranking will only be included for existing lines
 
-combo<-merge(GDP2,EDDATA, by="CountryCode", all=TRUE, SORT=TRUE)
-
 #make the GDP column into a number, not characters by first replacing the commas then forcing it to be numeric
 GDP2$GDP<-as.numeric(gsub(",", "", GDP2$GDP))
+
+combo<-merge(GDP2,EDDATA, by="CountryCode", all=TRUE, SORT=TRUE)
 
 #count the number of NA in ranking and GDP
 sum(is.na(GDP2$GDP.ranking))
@@ -29,12 +29,63 @@ combo$Income.Group[combo$Income.Group == "Low income"] <- "Low Income"
 combo$Income.Group[combo$Income.Group == "Lower middle income"] <- "Lower Middle Income"
 combo$Income.Group[combo$Income.Group == "Upper middle income"] <- "Upper Middle Income"
 
-#combo$Income.Group[combo$Income.Group == "Lower Middle Income" & !is.na(combo$Income.Group)]
-
 # Now I will pass this to an apply function that will generate a table of quantiles based on the following array
 arrayOfIncomeGroups <- unique(combo$Income.Group)
 
-#TODO
-combo2 <- combo[which(!is.na(combo$GDP.ranking)),]
-lapply(combo$Income.Group[arrayOfIncomeGroups],function(x) { quantile(x,na.rm = TRUE)})
+# TODO: First remove all N/A rankings we cannot use this
+# Form a table of quantiles from each group of income class and put this in a table
+# there is a way to do this with lapply, not sure how to construct a table from its output
+
+gdpGroups <- combo[which(!is.na(combo$GDP.ranking)),]
+
+
+# Breaking the GDP ranking into 5 separate quantile groups, and then summarizing the Income Groups, 
+#  we see, as shown in the table below, that xxxx countries are in the 
+#  "Lower Middle Income" Group but among the 38 nations with the highest GDP.
+
+# Break into quantiles by income group
+tableOfGroups <- as.table(
+  tapply(gdpGroups2$GDP.ranking,
+         gdpGroups$Income.Group,
+         quantile))
+
+#summarize the income groups?
+summaryOfGroups<- tapply(gdpGroups$GDP.ranking,gdpGroups$Income.Group,
+                         function(x) 
+                           {
+                            N =length(x)
+                            
+                            }
+                           )
+
+totalObservations<-tapply(gdpGroups$GDP.ranking,gdpGroups$Income.Group,
+       function(x) 
+       {
+         N =length(x)
+         
+       }
+)
+
+
+gdpGroups$GDP.quant.group[gdpGroups$GDP.ranking <20] <-"G0_to_20"
+gdpGroups$GDP.quant.group[gdpGroups$GDP.ranking >=20 & gdpGroups$GDP.ranking <40 ] <-"G20_to_40"
+gdpGroups$GDP.quant.group[gdpGroups$GDP.ranking >=40 & gdpGroups$GDP.ranking <60 ] <-"G40_to_60"
+gdpGroups$GDP.quant.group[gdpGroups$GDP.ranking >=60 & gdpGroups$GDP.ranking <80 ] <-"G60_to_80"
+                         
+data.frame(table(gdpGroups$Income.Group,gdpGroups$GDP.quant.group))
+
+combo2$GDP.quant.group[combo2$GDP.ranking <20] <-"G0_to_20"
+combo2$GDP.quant.group[combo2$GDP.ranking >=20 & combo2$GDP.ranking <40 ] <-"G20_to_40"
+combo2$GDP.quant.group[combo2$GDP.ranking >=40 & combo2$GDP.ranking <60 ] <-"G40_to_60"
+combo2$GDP.quant.group[combo2$GDP.ranking >=60 & combo2$GDP.ranking <80 ] <-"G60_to_80"
+combo2$GDP.quant.group[combo2$GDP.ranking >=80 & combo2$GDP.ranking <100 ] <-"G80_to_100"
+
+data.frame(table(combo2$Income.Group,combo2$GDP.quant.group))
+
+
+
+
+
+
+
 

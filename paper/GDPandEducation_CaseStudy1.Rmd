@@ -70,12 +70,13 @@ sum(is.na(combo2.HighIncome$GDP.ranking))
 ```{r cars5, echo=TRUE}
 getwd()
 ```
-5. Breaking the GDP ranking into 5 separate quantile groups, and then summarizing the Income Groups, we see, as shown in the table below, that xxxx countries are in the "Lower Middle Income" Group but among the 38 nations with the highest GDP.
+5. Breaking the GDP ranking into 5 separate quantile groups, and then summarizing the Income Groups, we see, as shown in the table below, that 53 countries are in the "Lower Middle Income" Group but among the 38 nations with the highest GDP.
 ```{r question 5}
 
-quantile(combo$GDP.ranking[which(!is.na(combo$GDP.ranking))])
+#as.table(tapply(gdpGroups$GDP.ranking,gdpGroups$Income.Group,quantile))
+tableOfGroups
 
-
+summaryOfGroups
 
 ```
 
