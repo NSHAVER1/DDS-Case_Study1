@@ -12,10 +12,11 @@ knitr::opts_chunk$set(echo = TRUE)
 #set the working directory
 knitr::opts_knit$set(root.dir = "C:\\Users\\nmsha\\Documents\\SMU\\DoingDataScience\\homework\\CaseStudy1")
 #ensure all required packages are installed, and if not, install them
-list.of.packages <- c("downloader")
+list.of.packages <- c("downloader","tidyr")
 new.packages <- list.of.packages[!(list.of.packages %in% installed.packages()[,"Package"])]
 if(length(new.packages)) install.packages(new.packages)
 library(downloader)
+library(tidyr)
 ```
 
 ## Introduction
