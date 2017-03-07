@@ -215,19 +215,31 @@ sum(is.na(combo2.HighIncome$GDP.ranking))</code></pre>
 <pre class="r"><code>getwd()</code></pre>
 <pre><code>## [1] &quot;C:/Users/in805/Documents/Code/DDS-Case_Study1&quot;</code></pre>
 <ol start="5" style="list-style-type: decimal">
-<li>Breaking the GDP ranking into 5 separate quantile groups, and then summarizing the Income Groups, we see, as shown in the table below, that xxxx countries are in the “Lower Middle Income” Group but among the 38 nations with the highest GDP.</li>
+<li>Breaking the GDP ranking into 5 separate quantile groups, and then summarizing the Income Groups, we see, as shown in the table below, that 53 countries are in the “Lower Middle Income” Group but among the 38 nations with the highest GDP.</li>
 </ol>
-<pre class="r"><code>#as.table(tapply(gdpGroups$GDP.ranking,gdpGroups$Income.Group,quantile))
-tableOfGroups</code></pre>
+<pre class="r"><code>tableOfGroups</code></pre>
 <pre><code>##            High Income             Low Income    Lower Middle Income 
 ##     6, 25, 54, 94, 161 59, 112, 139, 156, 182  10, 65, 100, 163, 190 
 ##    Upper Middle Income 
 ##    7, 48, 83, 135, 187</code></pre>
-<pre class="r"><code>summaryOfGroups</code></pre>
-<pre><code>##         High Income          Low Income Lower Middle Income 
-##                  49                  37                  53 
-## Upper Middle Income 
-##                  45</code></pre>
+<pre class="r"><code>incomeGroupsQuantized</code></pre>
+<pre><code>##                   Var1      Var2 Freq
+## 1          High Income  G0_to_20    8
+## 2           Low Income  G0_to_20    0
+## 3  Lower Middle Income  G0_to_20    2
+## 4  Upper Middle Income  G0_to_20    4
+## 5          High Income G20_to_40   10
+## 6           Low Income G20_to_40    0
+## 7  Lower Middle Income G20_to_40    3
+## 8  Upper Middle Income G20_to_40    7
+## 9          High Income G40_to_60   10
+## 10          Low Income G40_to_60    1
+## 11 Lower Middle Income G40_to_60    5
+## 12 Upper Middle Income G40_to_60    4
+## 13         High Income G60_to_80    9
+## 14          Low Income G60_to_80    4
+## 15 Lower Middle Income G60_to_80   16
+## 16 Upper Middle Income G60_to_80   11</code></pre>
 </div>
 <div id="conclusion" class="section level2">
 <h2>Conclusion</h2>

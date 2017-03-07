@@ -20,6 +20,9 @@ combo<-merge(GDP2,EDDATA, by="CountryCode", all=TRUE, SORT=TRUE)
 sum(is.na(GDP2$GDP.ranking))
 sum(is.na(GDP2$GDP))
 
+# The number of rows that are not NA
+sum(!is.na(GDP2$GDP.ranking))
+
 # Remove extra letters and characters
 combo$Income.Group<- gsub(":.*", "", combo$Income.Group)
 
@@ -29,10 +32,10 @@ combo$Income.Group[combo$Income.Group == "Low income"] <- "Low Income"
 combo$Income.Group[combo$Income.Group == "Lower middle income"] <- "Lower Middle Income"
 combo$Income.Group[combo$Income.Group == "Upper middle income"] <- "Upper Middle Income"
 
-# Now I will pass this to an apply function that will generate a table of quantiles based on the following array
+#Generate array of Income Groups
 arrayOfIncomeGroups <- unique(combo$Income.Group)
 
-# TODO: First remove all N/A rankings we cannot use this
+# Now I will pass this to an apply function that will generate a table of quantiles based on the following array
 # Form a table of quantiles from each group of income class and put this in a table
 # there is a way to do this with lapply, not sure how to construct a table from its output
 
@@ -45,47 +48,16 @@ gdpGroups <- combo[which(!is.na(combo$GDP.ranking)),]
 
 # Break into quantiles by income group
 tableOfGroups <- as.table(
-  tapply(gdpGroups2$GDP.ranking,
+  tapply(gdpGroups$GDP.ranking,
          gdpGroups$Income.Group,
          quantile))
-
-#summarize the income groups?
-summaryOfGroups<- tapply(gdpGroups$GDP.ranking,gdpGroups$Income.Group,
-                         function(x) 
-                           {
-                            N =length(x)
-                            
-                            }
-                           )
-
-totalObservations<-tapply(gdpGroups$GDP.ranking,gdpGroups$Income.Group,
-       function(x) 
-       {
-         N =length(x)
-         
-       }
-)
-
 
 gdpGroups$GDP.quant.group[gdpGroups$GDP.ranking <20] <-"G0_to_20"
 gdpGroups$GDP.quant.group[gdpGroups$GDP.ranking >=20 & gdpGroups$GDP.ranking <40 ] <-"G20_to_40"
 gdpGroups$GDP.quant.group[gdpGroups$GDP.ranking >=40 & gdpGroups$GDP.ranking <60 ] <-"G40_to_60"
 gdpGroups$GDP.quant.group[gdpGroups$GDP.ranking >=60 & gdpGroups$GDP.ranking <80 ] <-"G60_to_80"
+gdpGroups$GDP.quant.group[gdpGroups$GDP.ranking >=80 & gdpGroups$GDP.ranking <100 ] <-"G80_to_100"
                          
-data.frame(table(gdpGroups$Income.Group,gdpGroups$GDP.quant.group))
-
-combo2$GDP.quant.group[combo2$GDP.ranking <20] <-"G0_to_20"
-combo2$GDP.quant.group[combo2$GDP.ranking >=20 & combo2$GDP.ranking <40 ] <-"G20_to_40"
-combo2$GDP.quant.group[combo2$GDP.ranking >=40 & combo2$GDP.ranking <60 ] <-"G40_to_60"
-combo2$GDP.quant.group[combo2$GDP.ranking >=60 & combo2$GDP.ranking <80 ] <-"G60_to_80"
-combo2$GDP.quant.group[combo2$GDP.ranking >=80 & combo2$GDP.ranking <100 ] <-"G80_to_100"
-
-data.frame(table(combo2$Income.Group,combo2$GDP.quant.group))
-
-
-
-
-
-
-
+incomeGroupsQuantized <- data.frame(table(gdpGroups$Income.Group,gdpGroups$GDP.quant.group))
+incomeGroupsQuantized[incomeGroupsQuantized$Var1 =="Lower Middle Income",]
 
