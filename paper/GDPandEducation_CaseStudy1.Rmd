@@ -12,11 +12,12 @@ knitr::opts_chunk$set(echo = TRUE)
 #set the working directory
 knitr::opts_knit$set(root.dir = "C:\\Users\\nmsha\\Documents\\SMU\\DoingDataScience\\homework\\CaseStudy1")
 #ensure all required packages are installed, and if not, install them
-list.of.packages <- c("downloader","tidyr")
+list.of.packages <- c("downloader","tidyr","ggplot2")
 new.packages <- list.of.packages[!(list.of.packages %in% installed.packages()[,"Package"])]
 if(length(new.packages)) install.packages(new.packages)
 library(downloader)
 library(tidyr)
+library(ggplot2)
 ```
 
 ## Introduction
@@ -34,7 +35,7 @@ source(paste(dir,"/source/merge_ED_GDP.R",sep=""))
 
 ## Analysis Results
 
-1. After merging the GDP and education datasets based on country code, 224 of the IDs match between the two datasets, as shown in the dataframe below, which has 224 rows after the matching between the education data and the GDP data is complete and NA's are excluded:
+1. After merging the GDP and education datasets based on country code, 189 of the IDs match between the two datasets, as shown in the dataframe below, which has 189 rows after the matching between the education data and the GDP data is complete and NA's are excluded:
 ```{r count_rows}
 ##use the str command to describe the number of observations.
 ##rows where the country code did not match were exluded by this line in merge_ED_GDP.R
@@ -42,7 +43,7 @@ source(paste(dir,"/source/merge_ED_GDP.R",sep=""))
 str(combo2)
 ```
 
-2. The country with the 13th lowest GDP (determined by sorting the data in ascending order by GDP, placing the United States last) is St. Kitts and Nevis. There were 21 NA values in the GDP column when sorting, but they were all at the end.
+2. The country with the 13th lowest GDP (determined by sorting the data in ascending order by GDP, placing the United States last) is St. Kitts and Nevis. There were no NA values in the GDP column.
 ```{r sorting}
 #sort in order of GDP
 sorted_GDP<-combo2[order(combo2$GDP),]
@@ -70,10 +71,10 @@ sum(is.na(combo2.HighIncome$GDP.ranking))
 ```{r cars5, echo=TRUE}
 getwd()
 ```
-5. Breaking the GDP ranking into 5 separate quantile groups, and then summarizing the Income Groups, we see, as shown in the table below, that xxxx countries are in the "Lower Middle Income" Group but among the 38 nations with the highest GDP.
+5. Breaking the GDP ranking into 5 separate quantile groups, and then summarizing the Income Groups, we see, as shown in the table below, that 5 countries are in the "Lower Middle Income" Group but among the 38 nations with the highest GDP.
 ```{r cars6}
 getwd()
 ```
 
 ## Conclusion
-In this study of GDP and Education levels, using data from the world bank, we find that there are 224 countries from which we can make conclusions about the GDP and education levels. The country with the 13th lowest GDP is St. Kitts and Nevis.
+In this study of GDP and Education levels, using data from the world bank, we find that there are 189 countries from which we can make conclusions about the GDP and education levels. The country with the 13th lowest GDP is St. Kitts and Nevis.
