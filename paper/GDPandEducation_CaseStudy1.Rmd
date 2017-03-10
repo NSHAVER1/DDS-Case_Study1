@@ -55,7 +55,7 @@ GDP_13
 sum(is.na(sorted_GDP$GDP))
 ```
 
-3. The average GDP ranking for the "High Income: OECD" group is 32.96667. The average GDP ranking for the "High Income: nonOECD" group is 91.91304. There were 14 NAs in the GDP ranking column. 
+3. The average GDP ranking for the "High Income: OECD" group is 32.96667. The average GDP ranking for the "High Income: nonOECD" group is 91.91304. There were no NAs in the GDP ranking column. 
 ```{r question 3}
 # Create subset dataframe containing only 'High income: OECD' and 
 # 'High income: nonOECD' income group countries
