@@ -17,6 +17,5 @@ names(GDP)<-c("CountryCode","GDP.ranking","V3","GDP.Country","GDP","Seg?")
 #Remove thrid cloumn as it is not used
 GDP$V3<-NULL
 
-
 #Data seems to 
 EDDATA<-read.csv(file2,stringsAsFactors=FALSE, header=TRUE, na.strings=c(""))
