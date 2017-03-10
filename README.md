@@ -57,7 +57,7 @@ The file structure should be as follows:
 
 #FILE INFO
 
-ReamME.md
+README.md
 
   + md file containing the details of the project and how to reproduce it
 
@@ -105,7 +105,7 @@ CountryCode
 	
 GDP.ranking
 
-  + The rank of each country based on Gross Domestic Product (num
+  + The rank of each country based on Gross Domestic Product (num)
 	
 GDP.Country
 
