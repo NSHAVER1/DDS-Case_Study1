@@ -85,8 +85,10 @@ combo2$GDP.quant.group[combo2$GDP.ranking >=40 & combo2$GDP.ranking <60 ] <-"G40
 combo2$GDP.quant.group[combo2$GDP.ranking >=60 & combo2$GDP.ranking <80 ] <-"G60_to_80"
 combo2$GDP.quant.group[combo2$GDP.ranking >=80 & combo2$GDP.ranking <100 ] <-"G80_to_100"
 
-data.frame(table(combo2$Income.Group,combo2$GDP.quant.group))
+QuantTable<-data.frame(table(combo2$Income.Group,combo2$GDP.quant.group))
 
+QuantTable <- spread(QuantTable,Var2,Freq)
+QuantTable
 
 ```
 
