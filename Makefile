@@ -1,10 +1,13 @@
-all:	paper/GDPandEducation_CaseStudy1.html
+# Makefile for GDP case study
+# 
+all: paper/GDPandEducation_CaseStudy1.html
 
 clean: 
 	rm -f data/EDSTATS.csv data/GDP.csv
+	rm -f paper/*.html
 
-download.R: source/download.R
-	Rscript $<
-	
-GDPandEducation_CaseStudy1.html: paper/GDPandEducation_CaseStudy1.R data/EDSTATS.csv data/GDP.csv source/cleanup_ED_GDP.R source/merge_ED_GDP.R
-	Rscript -e 'rmarkdown::render("$<")'
+#data/EDSTATS.csv data/GDP.csv: source/download.R
+#	Rscript $<
+
+paper/GDPandEducation_CaseStudy1.html: paper/GDPandEducation_CaseStudy1.Rmd
+	Rscript -e 'library(rmarkdown); Sys.setenv(RSTUDIO_PANDOC="/usr/lib/rstudio/bin/pandoc");rmarkdown::render("$<")'
