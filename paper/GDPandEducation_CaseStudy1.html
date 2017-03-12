@@ -145,11 +145,11 @@ source(paste(dir,&quot;/source/cleanup_ED_GDP.R&quot;,sep=&quot;&quot;))</code><
 ##rows where the country code did not match were exluded by this line in merge_ED_GDP.R
 combo2&lt;-subset(combo,!is.na(Long.Name) &amp; !is.na(GDP.Country))
 str(combo2)</code></pre>
-<pre><code>## 'data.frame':    219 obs. of  34 variables:
+<pre><code>## 'data.frame':    224 obs. of  34 variables:
 ##  $ CountryCode                                      : chr  &quot;ABW&quot; &quot;ADO&quot; &quot;AFG&quot; &quot;AGO&quot; ...
 ##  $ GDP.ranking                                      : num  161 NA 105 60 125 32 26 133 NA 172 ...
-##  $ GDP.Country                                      : chr  &quot; 2,584 &quot; &quot;..&quot; &quot; 20,497 &quot; &quot; 114,147 &quot; ...
-##  $ GDP                                              : num  NA NA NA NA NA NA NA NA NA NA ...
+##  $ GDP.Country                                      : chr  &quot;Aruba&quot; &quot;Andorra&quot; &quot;Afghanistan&quot; &quot;Angola&quot; ...
+##  $ GDP                                              : num  2584 NA 20497 114147 12648 ...
 ##  $ Long.Name                                        : chr  &quot;Aruba&quot; &quot;Principality of Andorra&quot; &quot;Islamic State of Afghanistan&quot; &quot;People's Republic of Angola&quot; ...
 ##  $ Income.Group                                     : chr  &quot;High income: nonOECD&quot; &quot;High income: nonOECD&quot; &quot;Low income&quot; &quot;Lower middle income&quot; ...
 ##  $ Region                                           : chr  &quot;Latin America &amp; Caribbean&quot; &quot;Europe &amp; Central Asia&quot; &quot;South Asia&quot; &quot;Sub-Saharan Africa&quot; ...
@@ -189,11 +189,11 @@ sorted_GDP&lt;-combo2[order(combo2$GDP),]
 GDP_13&lt;-sorted_GDP[13,c(1,2,3,4)]
 ##display the 13th row
 GDP_13</code></pre>
-<pre><code>##    CountryCode GDP.ranking GDP.Country GDP
-## 13         AZE          68     66,605   NA</code></pre>
+<pre><code>##     CountryCode GDP.ranking         GDP.Country GDP
+## 110         KNA         178 St. Kitts and Nevis 767</code></pre>
 <pre class="r"><code>#count the NA in the GDP column
 sum(is.na(sorted_GDP$GDP))</code></pre>
-<pre><code>## [1] 219</code></pre>
+<pre><code>## [1] 21</code></pre>
 <ol start="3" style="list-style-type: decimal">
 <li>The average GDP ranking for the “High Income: OECD” group is 32.96667. The average GDP ranking for the “High Income: nonOECD” group is 91.91304. There were no NAs in the GDP ranking column.</li>
 </ol>
@@ -205,7 +205,7 @@ combo2.HighIncome &lt;- subset(combo2, combo2$Income.Group == 'High income: OECD
 aggregate(combo2.HighIncome$GDP.ranking~combo2.HighIncome$Income.Group, combo2.HighIncome, mean, na.rm = TRUE)</code></pre>
 <pre><code>##   combo2.HighIncome$Income.Group combo2.HighIncome$GDP.ranking
 ## 1           High income: nonOECD                      91.91304
-## 2              High income: OECD                      37.53846</code></pre>
+## 2              High income: OECD                      32.96667</code></pre>
 <pre class="r"><code>#count the number of NA values in GDP ranking
 sum(is.na(combo2.HighIncome$GDP.ranking))</code></pre>
 <pre><code>## [1] 14</code></pre>
@@ -213,7 +213,7 @@ sum(is.na(combo2.HighIncome$GDP.ranking))</code></pre>
 <li>Plotting the GDP for all countries, coloring by Income Group, we note that xxxxxxxxx.</li>
 </ol>
 <pre class="r"><code>getwd()</code></pre>
-<pre><code>## [1] &quot;C:/Users/in805/Documents/Code/DDS-Case_Study1&quot;</code></pre>
+<pre><code>## [1] &quot;/home/tuttlen/Documents/Code/DDS-Case_Study1&quot;</code></pre>
 <ol start="5" style="list-style-type: decimal">
 <li>Breaking the GDP ranking into 5 separate quantile groups, and then summarizing the Income Groups, we see, as shown in the table below, that 2 countries are in the “Lower Middle Income” Group but among the 38 nations with the highest GDP.</li>
 </ol>
@@ -226,33 +226,16 @@ combo2$GDP.quant.group[combo2$GDP.ranking &gt;=40 &amp; combo2$GDP.ranking &lt;6
 combo2$GDP.quant.group[combo2$GDP.ranking &gt;=60 &amp; combo2$GDP.ranking &lt;80 ] &lt;-&quot;G60_to_80&quot;
 combo2$GDP.quant.group[combo2$GDP.ranking &gt;=80 &amp; combo2$GDP.ranking &lt;100 ] &lt;-&quot;G80_to_100&quot;
 
-data.frame(table(combo2$Income.Group,combo2$GDP.quant.group))</code></pre>
-<pre><code>##                    Var1       Var2 Freq
-## 1  High income: nonOECD   G0_to_20    1
-## 2     High income: OECD   G0_to_20    7
-## 3            Low income   G0_to_20    0
-## 4   Lower middle income   G0_to_20    2
-## 5   Upper middle income   G0_to_20    4
-## 6  High income: nonOECD  G20_to_40    3
-## 7     High income: OECD  G20_to_40    7
-## 8            Low income  G20_to_40    0
-## 9   Lower middle income  G20_to_40    3
-## 10  Upper middle income  G20_to_40    7
-## 11 High income: nonOECD  G40_to_60    2
-## 12    High income: OECD  G40_to_60    8
-## 13           Low income  G40_to_60    1
-## 14  Lower middle income  G40_to_60    5
-## 15  Upper middle income  G40_to_60    4
-## 16 High income: nonOECD  G60_to_80    3
-## 17    High income: OECD  G60_to_80    2
-## 18           Low income  G60_to_80    0
-## 19  Lower middle income  G60_to_80    9
-## 20  Upper middle income  G60_to_80    6
-## 21 High income: nonOECD G80_to_100    3
-## 22    High income: OECD G80_to_100    1
-## 23           Low income G80_to_100    4
-## 24  Lower middle income G80_to_100    7
-## 25  Upper middle income G80_to_100    5</code></pre>
+QuantTable&lt;-data.frame(table(combo2$Income.Group,combo2$GDP.quant.group))
+
+QuantTable &lt;- spread(QuantTable,Var2,Freq)
+QuantTable</code></pre>
+<pre><code>##                   Var1 G0_to_20 G20_to_40 G40_to_60 G60_to_80 G80_to_100
+## 1 High income: nonOECD        1         3         2         3          3
+## 2    High income: OECD       11         7         8         2          1
+## 3  Lower middle income        3         3         5         9          7
+## 4           Low income        0         0         1         0          4
+## 5  Upper middle income        4         7         4         6          5</code></pre>
 </div>
 <div id="conclusion" class="section level2">
 <h2>Conclusion</h2>
