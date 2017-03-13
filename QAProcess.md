@@ -1,4 +1,4 @@
-# Markdown file 
+# Check list for QA process 
 - [ ] Introduction To Project
 	- [ ] Does the document have an introduction?
 	- [ ] Is it formed corectly and properly described?
@@ -6,7 +6,9 @@
 - [ ] Code Section
 	- [ ] Correctly commented?
 	- [ ] *modular* style?
-	- [ ] Is the code well written? 
+	- [ ] Is the code well written?
+	- [ ] Does it compile in R?
+	- [ ] Does it build with make? 
 - [ ] Brief Explanation
 	- [ ] Is it written well?
 	- [ ] Spelling and Grammar?
