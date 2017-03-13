@@ -1,0 +1,23 @@
+# Markdown file 
+- [ ] Introduction To Project
+	- [ ] Does the document have an introduction?
+	- [ ] Is it formed corectly and properly described?
+	- [ ] Does it provide context?
+- [ ] Code Section
+	- [ ] Correctly commented?
+	- [ ] *modular* style?
+	- [ ] Is the code well written? 
+- [ ] Brief Explanation
+	- [ ] Is it written well?
+	- [ ] Spelling and Grammar?
+- [ ] Answers 
+	- [ ] Are the answers clear?
+	- [ ] Are the answers correct?
+	- [ ] Spelling and Grammar?
+- [ ] Conclusion
+	- [ ] Does it summarize findings from the excercise in paragraph form?
+	- [ ] Spelling and Grammar?
+- [ ] GitHub Items
+	- [ ] Is it able to get from GitHub on a virgin machine and build?
+	- [ ] Will it run on a Mac or PC without modifications?
+	 
