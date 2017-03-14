@@ -221,9 +221,11 @@ ranking$GDP.quant.group[ranking$GDP.ranking&gt;(3*QuantSep) &amp; ranking$GDP.ra
 ranking$GDP.quant.group[ranking$GDP.ranking&gt;(4*QuantSep)]&lt;-&quot;G80_to_100&quot;
 #summarize the data by IncomeGroup and GDP ranking group, print the result
 QuantIncTable &lt;- data.frame(table(ranking$Income.Group,ranking$GDP.quant.group))
-QuantIncTable &lt;- spread(QuantIncTable,Var2,Freq)
+names(QuantIncTable) &lt;- c('IncomeGroup','Ranking','Freq')
+QuantIncTable &lt;- spread(QuantIncTable,Ranking,Freq)
+
 QuantIncTable</code></pre>
-<pre><code>##                   Var1 G0_to_20 G20_to_40 G40_to_60 G60_to_80 G80_to_100
+<pre><code>##            IncomeGroup G0_to_20 G20_to_40 G40_to_60 G60_to_80 G80_to_100
 ## 1 High income: nonOECD        4         5         8         4          2
 ## 2    High income: OECD       18        10         1         1          0
 ## 3  Lower middle income        5        13        12         8         16
@@ -232,7 +234,7 @@ QuantIncTable</code></pre>
 </div>
 <div id="conclusion" class="section level2">
 <h2>Conclusion</h2>
-<p>In this study of GDP and Education levels, using data from the world bank, we find that there are 189 countries from which we can make conclusions about the GDP and education levels. The country with the 13th lowest GDP is St. Kitts and Nevis. The High.Income:nonOCED groups have an average ranking of 91.91, while the High.Income:OECD groups have an average ranking of 32.97. Thus, within a given income group, being a member of the OCED leads to lower ranking (and thus higher GDP). Of the 38 countries with the highest GDP, five of the are classified as “Lower Middle Income”.</p>
+<p>In this study of GDP and Education levels, using data from the world bank, we find that there are 189 countries from which we can make conclusions about the GDP and education levels. The country with the 13th lowest GDP is St. Kitts and Nevis. The High.IDncome:nonOCE groups have an average ranking of 91.91, while the High.Income:OECD groups have an average ranking of 32.97. Thus, within a given income group, being a member of the OCED leads to lower ranking (and thus higher GDP). Of the 38 countries with the highest GDP, five of the are classified as “Lower Middle Income”.</p>
 </div>
 
 

@@ -1,12 +1,12 @@
 # Check list for QA process 
 - [ ] Introduction To Project
-	- [x ] (*nshaver*) Does the document have an introduction?
-	- [x ] (*nshaver*) Is it formed corectly and properly described?
+	- [x] (*nshaver*) Does the document have an introduction?
+	- [x] (*nshaver*) Is it formed corectly and properly described?
 	- [x] (*nshaver*) Does it provide context?
 	[ ] Spelling and Grammar? nshaver: need a comma after study in the intro
 - [ ] Code Section
 	- [ ] Correctly commented? nshaver: Need to remove the commennt in the .rmd file, line 13, which shows my old working dir; also, the code in line 43 of the .rmd file was intended to be a comment, not active code
-	- [X ] (*nshaver*) *modular* style?
+	- [x] (*nshaver*) *modular* style?
 	- [ ] Is the code well written? nshaver: no, clean up code is not the latest rev, and thus it does not correctly remove the unranked rows
 	- [ ] Does it compile in R? nshaver: no, the source statements from the .rmd do not find the correct code. it is looking in the wrong directory for the R code. it also can't write the csv files to the right directory.
 	- [ ] Does it build with make? 
@@ -24,9 +24,9 @@
 	- [ ] Is it able to get from GitHub on a virgin machine and build?
 	- [ ] Will it run on a Mac or PC without modifications?
 -[ ] Readme file nshaver: the current version is not correct, the correct version is in the history, though
-	-[] spelling and grammar
-	-[] session info captured
-	-[] all key columns and units described
-	-[] info of how to create the output is correct
-	-[] describes project purpose, title, copyright info, folder organization
+	-[ ] spelling and grammar
+	-[ ] session info captured
+	-[ ] all key columns and units described
+	-[ ] info of how to create the output is correct
+	-[ ] describes project purpose, title, copyright info, folder organization
 	 
