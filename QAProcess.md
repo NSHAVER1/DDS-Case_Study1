@@ -23,4 +23,10 @@
 - [ ] GitHub Items
 	- [ ] Is it able to get from GitHub on a virgin machine and build?
 	- [ ] Will it run on a Mac or PC without modifications?
+-[] Readme file nshaver: the current version is not correct, the correct version is in the history, though
+	[] spelling and grammar
+	[] session info captured
+	[] all key columns and units described
+	[] info of how to create the output is correct
+	[] describes project purpose, title, copyright info, folder organization
 	 
