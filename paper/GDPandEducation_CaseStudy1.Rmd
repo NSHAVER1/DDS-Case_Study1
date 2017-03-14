@@ -9,7 +9,7 @@ Keep_md: TRUE
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
-#set the working directory
+#set the working directory-
 # knitr::opts_knit$set(root.dir = "C:\\Users\\nmsha\\Documents\\SMU\\DoingDataScience\\homework\\CaseStudy1")
 knitr::opts_knit$set(root.dir = "..//")
 #ensure all required packages are installed, and if not, install them
@@ -36,15 +36,15 @@ source(paste(dir,"/source/merge_ED_GDP.R",sep=""))
 
 ## Analysis Results
 
-1. After merging the GDP and education datasets based on country code, 189 of the IDs match between the two datasets, as shown in the dataframe below, which has 189 rows after the matching between the education data and the GDP data is complete and NA's are excluded:
+Q1. After merging the GDP and education datasets based on country code, 189 of the IDs match between the two datasets, as shown in the dataframe below, which has 189 rows after the matching between the education data and the GDP data is complete and NA's are excluded:
 ```{r count_rows}
 ##use the str command to describe the number of observations.
-##rows where the country code did not match were exluded by this line in merge_ED_GDP.R
-combo2<-subset(combo,!is.na(Long.Name) & !is.na(GDP.Country))
+##rows where the country code did not match were exluded by this line in merge_ED_GDP.R--
+#combo2<-subset(combo,!is.na(Long.Name) & !is.na(GDP.Country))
 str(combo2)
 ```
 
-2. The country with the 13th lowest GDP (determined by sorting the data in ascending order by GDP, placing the United States last) is St. Kitts and Nevis. There were no NA values in the GDP column.
+Q2. The country with the 13th lowest GDP (determined by sorting the data in ascending order by GDP, placing the United States last) is St. Kitts and Nevis. There were no NA values in the GDP column.
 ```{r sorting}
 #sort in order of GDP
 sorted_GDP<-combo2[order(combo2$GDP),]
@@ -56,7 +56,7 @@ GDP_13
 sum(is.na(sorted_GDP$GDP))
 ```
 
-3. The average GDP ranking for the "High Income: OECD" group is 32.96667. The average GDP ranking for the "High Income: nonOECD" group is 91.91304. There were no NAs in the GDP ranking column. 
+Q3. The average GDP ranking for the "High Income: OECD" group is 32.96667. The average GDP ranking for the "High Income: nonOECD" group is 91.91304. There were no NAs in the GDP ranking column. 
 ```{r question 3}
 # Create subset dataframe containing only 'High income: OECD' and 
 # 'High income: nonOECD' income group countries
@@ -68,29 +68,33 @@ aggregate(combo2.HighIncome$GDP.ranking~combo2.HighIncome$Income.Group, combo2.H
 sum(is.na(combo2.HighIncome$GDP.ranking))
 ```
 
-4. Plotting the GDP for all countries, coloring by Income Group, we note that xxxxxxxxx.
+Q4. Plotting the GDP for all countries, coloring by Income Group, we note that xxxxxxxxx.
 ```{r cars5, echo=TRUE}
 getwd()
 ```
 
-5. Breaking the GDP ranking into 5 separate quantile groups, and then summarizing the Income Groups, we see, as shown in the table below, that 2 countries are in the "Lower Middle Income" Group but among the 38 nations with the highest GDP.
+Q5. Breaking the GDP ranking into 5 separate quantile groups, and then summarizing the Income Groups, we see, as shown in the table below, that 5 countries are in the "Lower Middle Income" Group but are among the 38 nations with the highest GDP.
 ```{r question 5}
 
-# Group GDP by ranking for values that are not N/A
-GDPRanking <- subset(combo2,!is.na(GDP.ranking))
-
-combo2$GDP.quant.group[combo2$GDP.ranking <20] <-"G0_to_20"
-combo2$GDP.quant.group[combo2$GDP.ranking >=20 & combo2$GDP.ranking <40 ] <-"G20_to_40"
-combo2$GDP.quant.group[combo2$GDP.ranking >=40 & combo2$GDP.ranking <60 ] <-"G40_to_60"
-combo2$GDP.quant.group[combo2$GDP.ranking >=60 & combo2$GDP.ranking <80 ] <-"G60_to_80"
-combo2$GDP.quant.group[combo2$GDP.ranking >=80 & combo2$GDP.ranking <100 ] <-"G80_to_100"
-
-QuantTable<-data.frame(table(combo2$Income.Group,combo2$GDP.quant.group))
-
-QuantTable <- spread(QuantTable,Var2,Freq)
-QuantTable
+#make a table that doesn't have any NA for GDP.Ranking
+ranking<-subset(combo2,!is.na(GDP.ranking))
+#count the number of NAs that were in that column before the subset--answer is 35
+sum(is.na(combo2$GDP.ranking))
+#determine how many members should be in each group
+QuantSep <- ceiling(sum(!is.na(ranking$GDP.ranking))/5)
+#divide the GDP ranking into 5 quantile groups
+ranking$GDP.quant.group[ranking$GDP.ranking<=QuantSep]<-"G0_to_20"
+ranking$GDP.quant.group[ranking$GDP.ranking>QuantSep & ranking$GDP.ranking<=(2*QuantSep)]<-"G20_to_40"
+ranking$GDP.quant.group[ranking$GDP.ranking>(2*QuantSep) & ranking$GDP.ranking<=(3*QuantSep)]<-"G40_to_60"
+ranking$GDP.quant.group[ranking$GDP.ranking>(3*QuantSep) & ranking$GDP.ranking<=(4*QuantSep)]<-"G60_to_80"
+ranking$GDP.quant.group[ranking$GDP.ranking>(4*QuantSep)]<-"G80_to_100"
+#summarize the data by IncomeGroup and GDP ranking group, print the result
+QuantIncTable <- data.frame(table(ranking$Income.Group,ranking$GDP.quant.group))
+QuantIncTable <- spread(QuantIncTable,Var2,Freq)
+QuantIncTable
 
 ```
 
 ## Conclusion
-In this study of GDP and Education levels, using data from the world bank, we find that there are 189 countries from which we can make conclusions about the GDP and education levels. The country with the 13th lowest GDP is St. Kitts and Nevis.
+In this study of GDP and Education levels, using data from the world bank, we find that there are 189 countries from which we can make conclusions about the GDP and education levels. The country with the 13th lowest GDP is St. Kitts and Nevis. The High.Income:nonOCED groups have an average ranking of 91.91, while the High.Income:OECD groups have an average ranking of 32.97. Thus, within a given income group, being a member of the OCED leads to lower ranking (and thus higher GDP). Of the 38 countries with the highest GDP, five of the are classified as "Lower Middle Income".
+
