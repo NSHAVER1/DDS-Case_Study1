@@ -15,7 +15,7 @@
 	- [ ] Spelling and Grammar?
 - [ ] Answers 
 	- [ ] Are the answers clear?
-	- [ ] Are the answers correct? nshaver: Q4 is not complete, Q5 is not the right version of the answer--cose is wrong and the answer should be 5.
+	- [ ] Are the answers correct? nshaver: Q4 is not complete, Q5 is not the right version of the answer--cose is wrong and the answer should be 5. Q1 is wrong as we need the correct version of cleanup_ED_GDP.R--the right version removes the unranked countries
 	- [ ] Spelling and Grammar?
 - [ ] Conclusion
 	- [ ] Does it summarize findings from the excercise in paragraph form? nshaver: its not done--it needs to provide a summary of the findings in question 3, 4 and 5
