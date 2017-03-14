@@ -7,8 +7,8 @@
 - [ ] Code Section
 	- [ ] Correctly commented? nshaver: Need to remove the commennt in the .rmd file, line 13, which shows my old working dir
 	- [X ] (*nshaver*) *modular* style?
-	- [ ] Is the code well written? nshaver: need to check that clean up is latest rev
-	- [ ] Does it compile in R? nshaver: no, the source statements do not find the correct code. it is looking in the wrong directory for the R code. it also can't write the csv files to the right directory.
+	- [ ] Is the code well written? nshaver: no, clean up code is not the latest rev, and thus it does not correctly remove the unranked rows
+	- [ ] Does it compile in R? nshaver: no, the source statements from the .rmd do not find the correct code. it is looking in the wrong directory for the R code. it also can't write the csv files to the right directory.
 	- [ ] Does it build with make? 
 - [ ] Brief Explanation
 	- [ ] Is it written well?
