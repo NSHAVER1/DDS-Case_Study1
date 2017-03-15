@@ -68,9 +68,17 @@ aggregate(combo2.HighIncome$GDP.ranking~combo2.HighIncome$Income.Group, combo2.H
 sum(is.na(combo2.HighIncome$GDP.ranking))
 ```
 
-Q4. Plotting the GDP for all countries, coloring by Income Group, we note that xxxxxxxxx.
-```{r cars5, echo=TRUE}
-getwd()
+Q4. Plotting the GDP for all countries, coloring by Income Group, we note that most countries are lined up on a tight region near the bottom. Only a few countries in the next group and very few farthest region. The highest point in the High.income: nonOECD group. We can see how the income groups are spread out a little better by using the log of the values.
+```{r question 4, echo=TRUE}
+
+ggplot(data=combo2, aes(x=GDP, y=CountryCode, color=Income.Group))+geom_point()+geom_text(aes(label=combo2$CountryCode),hjust=0, vjust=0)+ggtitle("Country's by GDP colored by Income Group nonLog") 
+
+
+ggplot(data=combo2, aes(x=log(GDP), y=CountryCode, color=Income.Group))+geom_point()+ggtitle("Country by GDP colored by Income Group Log")+geom_text(aes(label=combo2$CountryCode),hjust=0, vjust=0)+ theme(axis.title.y=element_blank(),
+        axis.text.y=element_blank(),
+        axis.ticks.y=element_blank(),
+        plot.title = element_text(hjust = 0.5))
+
 ```
 
 Q5. Breaking the GDP ranking into 5 separate quantile groups, and then summarizing the Income Groups, we see, as shown in the table below, that 5 countries are in the "Lower Middle Income" Group but are among the 38 nations with the highest GDP.
@@ -98,5 +106,5 @@ QuantIncTable
 ```
 
 ## Conclusion
-In this study of GDP and Education levels, using data from the world bank, we find that there are 189 countries from which we can make conclusions about the GDP and education levels. The country with the 13th lowest GDP is St. Kitts and Nevis. The High.IDncome:nonOCE groups have an average ranking of 91.91, while the High.Income:OECD groups have an average ranking of 32.97. Thus, within a given income group, being a member of the OCED leads to lower ranking (and thus higher GDP). Of the 38 countries with the highest GDP, five of the are classified as "Lower Middle Income".
+In this study of GDP and Education levels, using data from the world bank, we find that there are 189 countries from which we can make conclusions about the GDP and education levels. The country with the 13th lowest GDP is St. Kitts and Nevis. The High.IDncome:nonOCE groups have an average ranking of 91.91, while the High.Income:OECD groups have an average ranking of 32.97. Thus, within a given income group, being a member of the OCED leads to lower ranking (and thus higher GDP). Of the 38 countries with the highest GDP, five of the are classified as "Lower Middle Income". Examining GDP by country code shows many countries hold a a certain GDP threshold while only a small number have higher income groups. The highest point is not in the High.Income: nonOECD group but the High income: OECD group.
 
