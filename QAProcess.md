@@ -15,12 +15,12 @@
 	- [ ] Spelling and Grammar?
 - [ ] Answers 
 	- [ ] Are the answers clear?
-	- [x] Are the answers correct? nshaver: I like the plot for question 4. Here is a revised version of the answer to the question--Plotting the GDP for all of the countries and coloring by Income.Group, we notice that the "Low Income" and "Lower middle Income" groups tend to have lower GDP's than "High Income" groups. Vizualizing the data in this way also enables us to see the outliers in each Income Group--USA and China have higher GDPs than most of their respective groups, while Tuvalu (TUV) has a lower GDP than the rest of it's income group
+	- [x] Are the answers correct? nshaver: I like the plot for question 4, but the x-axis should have units--the GDP is reported in millions of US dollars. Here is a revised version of the answer to the question--Plotting the GDP for all of the countries and coloring by Income.Group, we notice that the "Low Income" and "Lower middle Income" groups tend to have lower GDP's than "High Income" groups. Additionally, countries part of the OECD have higher GDP than those that are not part of the OECD. Vizualizing the data in this way also enables us to see the outliers in each Income Group--USA and China have higher GDPs than most of their respective groups, while Tuvalu (TUV) has a lower GDP than the rest of it's income group. 
 	- [ ] Q5 is not the right version of the answer--cose is wrong and the answer should be 5. 
 	- [ ] Q1 is wrong as we need the correct version of cleanup_ED_GDP.R--the right version removes the unranked countries
 	- [ ] Spelling and Grammar?
 - [ ] Conclusion
-	- [ ] Does it summarize findings from the excercise in paragraph form? nshaver: its not done--it needs to provide a summary of the findings in question 3, 4 and 5
+	- [ ] Does it summarize findings from the excercise in paragraph form? nshaver: I struggled with making conclusions from this random set of statistics and graphs. How about this for the last sentance "Examining GDP by country code shows many countries have a GDP between 175 million and 3 trillion dollars, and generally countries in the "Low Income" income groups have lower GDP than countries in the "High Income GDP" groups. Also, countries that are members of the OECD tend to have higher GDP than non-member countries. 
 	- [ ] Spelling and Grammar?
 - [ ] GitHub Items
   - [ ] Is it able to get from GitHub on a virgin machine and build? nshaver: need an empty data directory on github so the files have somewhere to go
@@ -28,7 +28,7 @@
 - [ ] Readme file 
 	- [ ] spelling and grammar
 	- [ ] session info captured
-	- [ ] all key columns and units described
-	- [ ] info of how to create the output is correct
+	- [ ] all key columns and units described nshaver: in an attempt to add session info and units to GDP, I seem to have broken the formatting. sorry...
+	- [ ] info of how to create the output is correct 
 	- [ ] describes project purpose, title, copyright info, folder organization
 	 
