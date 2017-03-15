@@ -1,17 +1,17 @@
-#TITLE
+# TITLE
 
 Comparing Gross Domestic Product to Education Data
 
 Contributors: Georges Michel, Jack Nelson, Nicole Shaver, Nathan Tuttle
 
-#PURPOSE OF PROJECT
+# PURPOSE OF PROJECT
 
 This project takes two different datasets, one containing Gross Domestic Product by 
 country and the other containing education statistics by country, and compares the two
 based on country.  A series of questions are answered with last output comparing Gross
 Domestic Product rankings to the income group of that country. 
 
-#COPYRIGHT INFO
+# COPYRIGHT INFO
 
 This project was generated for Southern Methodist University course MSDS 6306
 Doing Data Science: An Introduction to Data Science to complete Case Study 1
@@ -22,7 +22,7 @@ GDP.csv: https://d396qusza40orc.cloudfront.net/getdata%2Fdata%2FGDP.csv
 
 EDDATA.csv: https://d396qusza40orc.cloudfront.net/getdata%2Fdata%2FEDSTATS_Country.csv
 
-#FILE ORGANIZATION
+# FILE ORGANIZATION
 
 ____ <- signifies a folder (i.e. data <- = data folder)
 
@@ -55,7 +55,7 @@ The file structure should be as follows:
   + source <- download.R | tidy_ED_GDP.R | merge_ED_GDP.R
 
 
-#FILE INFO
+# FILE INFO
 
 README.md
 
@@ -93,7 +93,7 @@ merge_ED_GDP.R
 
   + R code file that merges the GDP.csv and EDDATA.csv datasets
 
-#DATA INFO
+# DATA INFO
 
 *GDP.csv*
 
@@ -193,12 +193,12 @@ Table.Name
 
 Short.Name
 
-#HOW TO REPRODUCE RESEARCH
+# HOW TO REPRODUCE RESEARCH
 
 To reproduce the study download the project to the desired file path.  Open up the 
 command line on your machine.  Navigate to the file path the project was downloaded to
 in the command line.  Type 'make all' in the command line.  The remaining files along 
 with the GDPandEducation_CaseStudy1.html should be populated in the project's folder.
 
-#SESSIONINFO()
+# SESSIONINFO()
 
