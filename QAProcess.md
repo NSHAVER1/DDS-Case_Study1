@@ -23,7 +23,7 @@
 	- [ ] Does it summarize findings from the excercise in paragraph form? nshaver: its not done--it needs to provide a summary of the findings in question 3, 4 and 5
 	- [ ] Spelling and Grammar?
 - [ ] GitHub Items
-  - [ ] Is it able to get from GitHub on a virgin machine and build?
+  - [ ] Is it able to get from GitHub on a virgin machine and build? nshaver: need an empty data directory on github so the files have somewhere to go
   - [ ] Will it run on a Mac or PC without modifications?
 - [ ] Readme file 
 	- [ ] spelling and grammar
