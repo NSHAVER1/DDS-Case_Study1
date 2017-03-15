@@ -5,17 +5,17 @@
 	- [x] (*nshaver*) Does it provide context?
 	[ ] Spelling and Grammar? nshaver: need a comma after study in the intro
 - [ ] Code Section
-	- [ ] Correctly commented? nshaver: Need to remove the commennt in the .rmd file, line 13, which shows my old working dir; also, the code in line 43 of the .rmd file was intended to be a comment, not active code
+	- [ ] Correctly commented? nshaver: Need to remove the commennt in the .rmd file, line 13, which shows my old working dir
 	- [x] (*nshaver*) *modular* style?
-	- [ ] Is the code well written? nshaver: no, clean up code is not the latest rev, and thus it does not correctly remove the unranked rows
-	- [ ] Does it compile in R? nshaver: no, the source statements from the .rmd do not find the correct code. it is looking in the wrong directory for the R code. it also can't write the csv files to the right directory.
+	- [ ] Is the code well written? 
+	- [ ] Does it compile in R? nshaver: no, we need to have a data directory (it can be empty) for the csv files to be written into once they are downloaded
 	- [ ] Does it build with make? 
 - [ ] Brief Explanation
 	- [ ] Is it written well?
 	- [ ] Spelling and Grammar?
 - [ ] Answers 
 	- [ ] Are the answers clear?
-	- [x] Are the answers correct? nshaver: Q4 is not complete
+	- [x] Are the answers correct? nshaver: I like the plot for question 4. Here is a revised version of the answer to the question--Plotting the GDP for all of the countries and coloring by Income.Group, we notice that the "Low Income" and "Lower middle Income" groups tend to have lower GDP's than "High Income" groups. Vizualizing the data in this way also enables us to see the outliers in each Income Group--USA and China have higher GDPs than most of their respective groups, while Tuvalu (TUV) has a lower GDP than the rest of it's income group
 	- [ ] Q5 is not the right version of the answer--cose is wrong and the answer should be 5. 
 	- [ ] Q1 is wrong as we need the correct version of cleanup_ED_GDP.R--the right version removes the unranked countries
 	- [ ] Spelling and Grammar?
@@ -25,7 +25,7 @@
 - [ ] GitHub Items
   - [ ] Is it able to get from GitHub on a virgin machine and build?
   - [ ] Will it run on a Mac or PC without modifications?
-- [ ] Readme file nshaver: the current version is not correct, the correct version is in the history, though
+- [ ] Readme file 
 	- [ ] spelling and grammar
 	- [ ] session info captured
 	- [ ] all key columns and units described
