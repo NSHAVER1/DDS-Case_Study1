@@ -201,21 +201,4 @@ in the command line.  Type 'make all' in the command line.  The remaining files 
 with the GDPandEducation_CaseStudy1.html should be populated in the project's folder.
 
 #SESSIONINFO()
-R version 3.3.2 (2016-10-31)
-Platform: x86_64-w64-mingw32/x64 (64-bit)
-Running under: Windows >= 8 x64 (build 9200)
 
-locale:
-[1] LC_COLLATE=English_United States.1252  LC_CTYPE=English_United States.1252    LC_MONETARY=English_United States.1252
-[4] LC_NUMERIC=C                           LC_TIME=English_United States.1252    
-
-attached base packages:
-[1] stats     graphics  grDevices utils     datasets  methods   base     
-
-other attached packages:
-[1] ggplot2_2.2.1  tidyr_0.6.1    downloader_0.4
-
-loaded via a namespace (and not attached):
- [1] Rcpp_0.12.9      digest_0.6.11    assertthat_0.1   grid_3.3.2       plyr_1.8.4       gtable_0.2.0    
- [7] magrittr_1.5     scales_0.4.1     lazyeval_0.2.0   labeling_0.3     tools_3.3.2      munsell_0.4.3   
-[13] colorspace_1.3-2 knitr_1.15.1     tibble_1.2 
