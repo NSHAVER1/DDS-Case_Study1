@@ -25,6 +25,7 @@
 - [ ] GitHub Items
   - [ ] Is it able to get from GitHub on a virgin machine and build? nshaver: need an empty data directory on github so the files have somewhere to go
   - [ ] Will it run on a Mac or PC without modifications?
+  nshaver: File does not properly keep the .md file. Need to change top section of rmd file to keep the md file and upload all of the files created when you knit it.
 - [ ] Readme file 
 	- [ ] spelling and grammar
 	- [ ] session info captured
