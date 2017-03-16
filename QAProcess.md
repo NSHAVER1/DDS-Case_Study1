@@ -1,7 +1,7 @@
 # Check list for QA process 
 - [ ] Introduction To Project
 	- [x] (*nshaver*) Does the document have an introduction?
-	- [x] (*nshaver*) Is it formed corectly and properly described?
+	- [] (*nshaver*) Is it formed corectly and properly described? nshaver: Intro should say "In this study, we will examine the Gross Domestic Product (GDP) rankings for countries across the world and analyze the relationship between GDP and income groups. We will order the countries by GDP and evaluate the average GDP ranking for different income groups, visualize the GDP data for all countries by income group, and examine the relationship between income group and GDP. The analysis will utilize GDP and income group from the data-catalog at the world bank web site."
 	- [x] (*nshaver*) Does it provide context?
 	[ ] Spelling and Grammar? nshaver: need a comma after study in the intro
 - [ ] Code Section
@@ -20,7 +20,7 @@
 	- [ x] (*nshaver*) Q1 is wrong as we need the correct version of cleanup_ED_GDP.R--the right version removes the unranked countries
 	- [ ] Spelling and Grammar?
 - [ ] Conclusion
-	- [ ] Does it summarize findings from the excercise in paragraph form? nshaver: I struggled with making conclusions from this random set of statistics and graphs. How about this for the last sentance "Examining GDP by country code shows many countries have a GDP between 175 million and 3 trillion dollars, and generally countries in the "Low Income" income groups have lower GDP than countries in the "High Income GDP" groups. Also, countries that are members of the OECD tend to have higher GDP than non-member countries. 
+	- [ ] Does it summarize findings from the excercise in paragraph form? nshaver: I struggled with making conclusions from this random set of statistics and graphs. Here is my stab at a conclusion "In this study of GDP and income levels, using data from the World Bank, we find that there are 189 countries from which we can make conclusions about the GDP and income levels. The High.Income: nonOECD groups have an average ranking of 91.91, while the High.Income: OECD groups have an average ranking of 32.97. Thus, within a given income group, being a member of the OCED leads to lower GDP ranking (higher GDP). Of the 38 countries with the highest GDP, five of them are classified as “Lower Middle Income”. Examining GDP by country code shows many countries have a GDP between 175 million and 3 trillion dollars, and generally countries in the "Low Income" income groups have lower GDP than countries in the "High Income” income groups. Also, countries that are members of the OECD tend to have higher GDP than non-member countries."
 	- [ ] Spelling and Grammar?
 - [ ] GitHub Items
   - [ ] Is it able to get from GitHub on a virgin machine and build? nshaver: need an empty data directory on github so the files have somewhere to go
