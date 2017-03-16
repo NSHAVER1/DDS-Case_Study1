@@ -3,9 +3,7 @@ title: "GDPandEducation_CaseStudy1"
 author: "Georges Michel, Jack Nelson, Nicole Shaver, Nathan Tuttle"
 date: "February 25, 2017"
 output: 
-  html_document:
-    Keep_md: TRUE
-    self_contained: TRUE
+  github_document
 ---
 
 ```{r setup, include=FALSE}
