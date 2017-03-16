@@ -32,4 +32,5 @@
 	- [ ] all key columns and units described nshaver: in an attempt to add session info and units to GDP, I seem to have broken the formatting. sorry...
 	- [ ] info of how to create the output is correct 
 	- [ ] describes project purpose, title, copyright info, folder organization
+	nshaver-is the makefile deleting everything we need it to? the .md file isn't getting cleaned
 	 
