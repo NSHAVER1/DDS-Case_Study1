@@ -27,7 +27,7 @@
   - [x] (*nshaver*) Will it run on a Mac or PC without modifications?
   nshaver: File does not properly keep the .md file. Need to change top section of rmd file to keep the md file and upload all of the files created when you knit it.
 - [ ] Readme file 
-	- [ ] spelling and grammar
+	- [ ] spelling and grammar (*nshaver*) need a period at the end of the sentance in copyright info section
 	- [ ] session info captured
 	- [ ] all key columns and units described nshaver: in an attempt to add session info and units to GDP, I seem to have broken the formatting. sorry...
 	- [ ] info of how to create the output is correct 
