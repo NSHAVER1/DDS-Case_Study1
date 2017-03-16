@@ -2,7 +2,7 @@
 - [ ] Introduction To Project
 	- [x] (*nshaver*) Does the document have an introduction?
 	- [ ] (*nshaver*) Is it formed corectly and properly described? nshaver: Intro should say "In this study, we will examine the Gross Domestic Product (GDP) rankings for countries across the world and analyze the relationship between GDP and income groups. We will order the countries by GDP and evaluate the average GDP ranking for different income groups, visualize the GDP data for all countries by income group, and examine the relationship between income group and GDP. The analysis will utilize GDP and income group from the data-catalog at the world bank web site."
-	- [x] (*nshaver*) Does it provide context?
+	- [x] (*nshaver*) Does it provide context? nshaver: title should be changed to "Study of GDP and Income Level Data from the World Bank"
 	[ ] Spelling and Grammar? nshaver: need a comma after study in the intro
 - [ ] Code Section
 	- [ ] Correctly commented? nshaver: Need to remove the commennt in the .rmd file, line 13, which shows my old working dir. Need to add more comments to the code in Q4 to make the plot. See commments in next section about 
@@ -31,6 +31,6 @@
 	- [ ] session info captured
 	- [ ] all key columns and units described nshaver: in an attempt to add session info and units to GDP, I seem to have broken the formatting. sorry...
 	- [ ] info of how to create the output is correct 
-	- [ ] describes project purpose, title, copyright info, folder organization
+	- [ ] describes project purpose, title, copyright info, folder organization nshaver: title should be:"Study of GDP and Income Level Data from the World Bank"
 	nshaver-is the makefile deleting everything we need it to? the .md file isn't getting cleaned
 	 
