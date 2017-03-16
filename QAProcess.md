@@ -25,12 +25,12 @@
 - [ ] GitHub Items
   - [x] (*nshaver*) Is it able to get from GitHub on a virgin machine and build? 
   - [x] (*nshaver*) Will it run on a Mac or PC without modifications?
-  nshaver: File does not properly keep the .md file. Need to change top section of rmd file to keep the md file and upload all of the files created when you knit it.
+  nshaver: current version does NOT create an html. we either need to update the readme or change the format in the .rmd. also the version with github document doesn't autopreview and html when you run it. the word doc talks about producing an html.
 - [ ] Readme file 
-	- [ ] spelling and grammar (*nshaver*) need a period at the end of the sentance in copyright info section
+	- [ ] spelling and grammar (*nshaver*) need a period at the end of the sentance in copyright info section. millions is spelled wrong in GDP
 	- [ ] session info captured
 	- [ ] all key columns and units described nshaver: in an attempt to add session info and units to GDP, I seem to have broken the formatting. sorry...
-	- [ ] info of how to create the output is correct 
+	- [ ] info of how to create the output is correct (*nshaver*) need to capture final file structure with .md doc created and files directory
 	- [ ] describes project purpose, title, copyright info, folder organization nshaver: title should be:"Study of GDP and Income Level Data from the World Bank"
 	nshaver-is the makefile deleting everything we need it to? the .md file isn't getting cleaned
 	 
