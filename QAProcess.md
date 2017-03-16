@@ -23,8 +23,8 @@
 	- [ ] Does it summarize findings from the excercise in paragraph form? nshaver: I struggled with making conclusions from this random set of statistics and graphs. Here is my stab at a conclusion "In this study of GDP and income levels, using data from the World Bank, we find that there are 189 countries from which we can make conclusions about the GDP and income levels. The High.Income: nonOECD groups have an average ranking of 91.91, while the High.Income: OECD groups have an average ranking of 32.97. Thus, within a given income group, being a member of the OCED leads to lower GDP ranking (higher GDP). Of the 38 countries with the highest GDP, five of them are classified as “Lower Middle Income”. Examining GDP by country code shows many countries have a GDP between 175 million and 3 trillion dollars, and generally countries in the "Low Income" income groups have lower GDP than countries in the "High Income” income groups. Also, countries that are members of the OECD tend to have higher GDP than non-member countries."
 	- [ ] Spelling and Grammar?
 - [ ] GitHub Items
-  - [ ] Is it able to get from GitHub on a virgin machine and build? nshaver: need an empty data directory on github so the files have somewhere to go
-  - [ ] Will it run on a Mac or PC without modifications?
+  - [x ] (*nshaver*) Is it able to get from GitHub on a virgin machine and build? 
+  - [X ] (*nshaver*) Will it run on a Mac or PC without modifications?
   nshaver: File does not properly keep the .md file. Need to change top section of rmd file to keep the md file and upload all of the files created when you knit it.
 - [ ] Readme file 
 	- [ ] spelling and grammar
