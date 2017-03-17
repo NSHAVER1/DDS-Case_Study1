@@ -1,6 +1,6 @@
 # TITLE
 
-Comparing Gross Domestic Product to Education Data
+GDP and Income Levels for Countries Using World Bank Data
 
 Contributors: Georges Michel, Jack Nelson, Nicole Shaver, Nathan Tuttle
 
@@ -50,10 +50,13 @@ The file structure should be as follows:
   
   + data <- GDP.csv | EDDATA.csv
   
-  + paper <- GDPandEducation_CaseStudy1.Rmd | GDPandEducation_CaseStudy1.html
+  + paper <- GDPandEducation_CaseStudy1.Rmd | GDPandEducation_CaseStudy1.html | 
+  GDPandEducation_CaseStudy1.md | GDPandEducation_CaseStudy1_files
+             
+    + GDPandEducation_CaseStudy1_files <- figure_html <- question 4-1.png | 
+    question 4-2.png
   
   + source <- download.R | tidy_ED_GDP.R | merge_ED_GDP.R
-
 
 # FILE INFO
 
@@ -80,7 +83,21 @@ EDDATA.csv
 GDPandEducation_CaseStudy1.html
 
   + html file that contains the analysis and conclusion of the case study
+  
+GDPandEducation_CaseStudy1.md
+
+  + md file that contains the analysis and conclusion of the case study
+
+question 4-1.png
+
+  + png file that contains an image of the first plot for analysis question 4 in
+  GDPandEducation_CaseStudy1.html
 	
+question 4-2.png
+
+  + png file that contains an image of the second plot for analysis question 4 in
+  GDPandEducation_CaseStudy1.html
+  
 download.R
 
   + R code file that downloads the GDP.csv and EDDATA.csv from the internet
@@ -113,7 +130,7 @@ GDP.Country
 	
 GDP
 
-  + Gross Domestic Product for each country, in millons of US dollars (num)
+  + Gross Domestic Product for each country, in millions of US dollars (num)
 
 _Unused variables:_
 
@@ -197,8 +214,9 @@ Short.Name
 
 To reproduce the study download the project to the desired file path.  Open up the 
 command line on your machine.  Navigate to the file path the project was downloaded to
-in the command line.  Type 'make all' in the command line.  The remaining files along 
-with the GDPandEducation_CaseStudy1.html should be populated in the project's folder.
+in the command line.  Type 'make clean' in the command line.  Then type 'make all' in
+the command line.  The remaining files along with the GDPandEducation_CaseStudy1.html
+should be populated in the project's folder.
 
 # SESSIONINFO()
 
