@@ -3,8 +3,7 @@ title: "GDP and Income Levels for Countries Using World Bank Data"
 author: "Georges Michel, Jack Nelson, Nicole Shaver, Nathan Tuttle"
 date: "February 25, 2017"
 output: 
-      html_document:  
-        keep_md: true  
+      github_document 
 ---
 
 ```{r setup, include=FALSE}
