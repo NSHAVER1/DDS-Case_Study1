@@ -53,8 +53,8 @@ The file structure should be as follows:
   + paper <- GDPandEducation_CaseStudy1.Rmd | GDPandEducation_CaseStudy1.html | 
   GDPandEducation_CaseStudy1.md | GDPandEducation_CaseStudy1_files
              
-    + GDPandEducation_CaseStudy1_files <- figure_html <- question 4-1.png | 
-    question 4-2.png
+    + GDPandEducation_CaseStudy1_files <- figure-markdown_github <- question 4-1.png 
+    | question 4-2.png
   
   + source <- download.R | tidy_ED_GDP.R | merge_ED_GDP.R
 
@@ -216,7 +216,7 @@ To reproduce the study download the project to the desired file path.  Open up t
 command line on your machine.  Navigate to the file path the project was downloaded to
 in the command line.  Type 'make clean' in the command line.  Then type 'make all' in
 the command line.  The remaining files along with the GDPandEducation_CaseStudy1.html
-should be populated in the project's folder.
+should be populated in the project's paper folder.
 
 # SESSIONINFO()
 
