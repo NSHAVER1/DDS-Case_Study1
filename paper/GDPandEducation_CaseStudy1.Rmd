@@ -21,7 +21,7 @@ library(ggplot2)
 
 ## Introduction
 
-In this study we will examine the Gross Domestic Product (GDP) rankings for countries across the world and analyze the relationship between GDP and their education levels. We will order the countries by GDP and evaluate the average GDP ranking for different education groups, visualize the GDP data for all countries by income group, and examine the relationship between income group and GDP. The analysis will utilize GDP and education data from the data-catalog at the world bank web site.
+In this study, we will examine the Gross Domestic Product (GDP) rankings for countries across the world and analyze the relationship between GDP and income groups. We will order the countries by GDP and evaluate the average GDP ranking for different income groups, visualize the GDP data for all countries by income group, and examine the relationship between income group and GDP. The analysis will utilize GDP and income group from the data-catalog at the world bank web site.
 
 
 ## Code used to download, tidy and merge the data
@@ -34,41 +34,33 @@ source(paste(dir,"/source/merge_ED_GDP.R",sep=""))
 
 ## Analysis Results
 
-Q1. After merging the GDP and education datasets based on country code, 189 of the IDs match between the two datasets, as shown in the dataframe below, which has 189 rows after the matching between the education data and the GDP data is complete and NA's are excluded:
+Q1. After merging the GDP and education datasets based on country code, 189 of the IDs match between the two datasets, as shown in the structure of the dataframe below, which has 189 rows after the matching between the education data and the GDP data is complete and NA's are excluded:
 ```{r count_rows}
-##use the str command to describe the number of observations.
-##rows where the country code did not match were exluded by this line in merge_ED_GDP.R--
-#combo2<-subset(combo,!is.na(Long.Name) & !is.na(GDP.Country))
+#The code below will use the str command to describe the number of observations in the dataset. Rows where the country code did not match were exluded by this line in merge_ED_GDP.R--combo2<-subset(combo,!is.na(Long.Name) & !is.na(GDP.Country))
 str(combo2)
 ```
 
-Q2. The country with the 13th lowest GDP (determined by sorting the data in ascending order by GDP, placing the United States last) is St. Kitts and Nevis. There were no NA values in the GDP column.
+Q2. The country with the 13th lowest GDP (determined by sorting the data in ascending order by GDP, placing the United States last) is St. Kitts and Nevis. There were no NA values in the GDP column. The result below is the 13th row of a table sorted in ascending order by GDP.
 ```{r sorting}
-#sort in order of GDP
+# The code below will sort the table in ascending order by GDP, pick out the 13th row and key columns from the resulting dataframe, display the 13th row, and count the number of NAs in the GDP column.
 sorted_GDP<-combo2[order(combo2$GDP),]
-#pick out the 13th row from the dataframe, just the columns needed to answer the question
 GDP_13<-sorted_GDP[13,c(1,2,3,4)]
-##display the 13th row
 GDP_13
-#count the NA in the GDP column
 sum(is.na(sorted_GDP$GDP))
 ```
 
-Q3. The average GDP ranking for the "High Income: OECD" group is 32.96667. The average GDP ranking for the "High Income: nonOECD" group is 91.91304. There were no NAs in the GDP ranking column. 
+Q3. The table below summarizes the average GDP ranking for the "High Income: OECD" and "High Income: nonOECD" groups. The average GDP ranking for the "High Income: OECD" group is 32.96667. The average GDP ranking for the "High Income: nonOECD" group is 91.91304. There were no NAs in the GDP ranking column. 
 ```{r question 3}
-# Create subset dataframe containing only 'High income: OECD' and 
-# 'High income: nonOECD' income group countries
+# The code below will create a subset dataframe containing only 'High income: OECD' and 'High income: nonOECD' income group countries. It will then take the average GDP.ranking by income group of the subset with NA values removed, and count the number of NA values in the GDP ranking.
 combo2.HighIncome <- subset(combo2, combo2$Income.Group == 'High income: OECD' | combo2$Income.Group == 'High income: nonOECD')
-
-# Take the average GDP.ranking by income group of the subset with NA values removed
 aggregate(combo2.HighIncome$GDP.ranking~combo2.HighIncome$Income.Group, combo2.HighIncome, mean, na.rm = TRUE)
-#count the number of NA values in GDP ranking
 sum(is.na(combo2.HighIncome$GDP.ranking))
 ```
 
-Q4. Plotting the GDP for all countries, coloring by Income Group, we note that most countries are lined up on a tight region near the bottom. Only a few countries in the next group and very few farthest region. The highest point in the High.income: nonOECD group. We can see how the income groups are spread out a little better by using the log of the values.
+Q4. Plotting the GDP for all of the countries and coloring by Income.Group, we notice that the "Low Income" and "Lower middle Income" groups tend to have lower GDP's than "High Income" groups. Additionally, countries part of the OECD have a higher GDP than those that are not part of the OECD. Visualizing the data in this way also enables us to see the outliers in each Income Group--USA and China have higher GDPs than most of their respective groups, while Tuvalu (TUV) has a lower GDP than the rest of it's income group. 
 ```{r question 4, echo=TRUE}
-
+#The code below will plot the GDP for all countries, on both a standard and log scale, and color by Income Group, all 
+#using ggplot.
 ggplot(data=combo2, aes(x=GDP, y=CountryCode, color=Income.Group))+geom_point()+geom_text(aes(label=combo2$CountryCode),hjust=0, vjust=0)+ggtitle("Country's by GDP colored by Income Group nonLog") 
 
 
@@ -79,22 +71,18 @@ ggplot(data=combo2, aes(x=log(GDP), y=CountryCode, color=Income.Group))+geom_poi
 
 ```
 
-Q5. Breaking the GDP ranking into 5 separate quantile groups, and then summarizing the Income Groups, we see, as shown in the table below, that 5 countries are in the "Lower Middle Income" Group but are among the 38 nations with the highest GDP.
+Q5. The table below shows the Income Groups along the side and the GDP rank groups across the top, with the number of countries meeting both conditions in each cell of the table. The groups are defined as G0_to_20 being the 1st to 20th percentile by GDP ranking, G20_to_40 is >20th percentile to 40th percentile, etc. Thus, we see that there are a total fof 38 nations in the top 1/5th of the GDP ranking, and 5 nations within that top GDP ranking group that are classified as "Lower middle income".
 ```{r question 5}
 
-#make a table that doesn't have any NA for GDP.Ranking
+#The code below will make a table that doesn't have any NA for GDP.Ranking, count the number of NAs in the table, and divide the GDP ranking column into 5 quantile groups, with G0_to_20 having the lowest ranking (and thus highest GDP) and G80_to_100 having the highest GDP ranking (or lowest GDP). The code will then make a table by Income Group and ranking group and format it for easy reasing using the spread function.
 ranking<-subset(combo2,!is.na(GDP.ranking))
-#count the number of NAs that were in that column before the subset--answer is 35
 sum(is.na(combo2$GDP.ranking))
-#determine how many members should be in each group
 QuantSep <- ceiling(sum(!is.na(ranking$GDP.ranking))/5)
-#divide the GDP ranking into 5 quantile groups
 ranking$GDP.quant.group[ranking$GDP.ranking<=QuantSep]<-"G0_to_20"
 ranking$GDP.quant.group[ranking$GDP.ranking>QuantSep & ranking$GDP.ranking<=(2*QuantSep)]<-"G20_to_40"
 ranking$GDP.quant.group[ranking$GDP.ranking>(2*QuantSep) & ranking$GDP.ranking<=(3*QuantSep)]<-"G40_to_60"
 ranking$GDP.quant.group[ranking$GDP.ranking>(3*QuantSep) & ranking$GDP.ranking<=(4*QuantSep)]<-"G60_to_80"
 ranking$GDP.quant.group[ranking$GDP.ranking>(4*QuantSep)]<-"G80_to_100"
-#summarize the data by IncomeGroup and GDP ranking group, print the result
 QuantIncTable <- data.frame(table(ranking$Income.Group,ranking$GDP.quant.group))
 names(QuantIncTable) <- c('IncomeGroup','Ranking','Freq')
 QuantIncTable <- spread(QuantIncTable,Ranking,Freq)
@@ -104,5 +92,5 @@ QuantIncTable
 ```
 
 ## Conclusion
-In this study of GDP and Education levels, using data from the world bank, we find that there are 189 countries from which we can make conclusions about the GDP and education levels. The country with the 13th lowest GDP is St. Kitts and Nevis. The High.IDncome:nonOCE groups have an average ranking of 91.91, while the High.Income:OECD groups have an average ranking of 32.97. Thus, within a given income group, being a member of the OCED leads to lower ranking (and thus higher GDP). Of the 38 countries with the highest GDP, five of the are classified as "Lower Middle Income". Examining GDP by country code shows many countries hold a a certain GDP threshold while only a small number have higher income groups. The highest point is not in the High.Income: nonOECD group but the High income: OECD group.
+In this study of GDP and income levels, using data from the World Bank, we find that there are 189 countries from which we can make conclusions about the GDP and income levels. The High.Income: nonOECD groups have an average ranking of 91.91, while the High.Income: OECD groups have an average ranking of 32.97. Thus, within a given income group, being a member of the OCED leads to lower GDP ranking (higher GDP). Of the 38 countries with the highest GDP, five of them are classified as "Lower middle income". From this we can conclude that few countries with a high GDP are part of the lower income groups. Graphically examining GDP by country code and income group show that countries in the "Low income" income groups have lower GDP than countries in the "High income" income groups, and that countries that are members of the OECD tend to have higher GDP than non-member countries.
 
